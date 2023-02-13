@@ -1,16 +1,14 @@
-// choosed incremental static regeneration
-// all users see the same data but data can change
+// Option 1.3: server-side fetching 
+// getServerSideProps
+// only in production
 import Title from '@/components/Title';
 import { getProducts } from '@/lib/products';
 import Head from 'next/head';
 
-export async function getStaticProps() {
-  console.log('[HomePage] getStaticProps()');
+export async function getServerSideProps() {
+  console.log('[HomePage] getServerSideProps()');
   const products = await getProducts();
-  return { 
-    props: { products },
-    revalidate: 30,
-  }
+  return { props: { products }}
 }
 
 function HomePage({ products }) {

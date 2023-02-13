@@ -1,5 +1,5 @@
-// choosed incremental static regeneration
-// all users see the same data but data can change
+// Option 1.2: server-side fetching - incremental static regeneration
+// only in production
 import Title from '@/components/Title';
 import { getProducts } from '@/lib/products';
 import Head from 'next/head';

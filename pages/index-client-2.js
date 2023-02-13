@@ -1,19 +1,20 @@
-// choosed incremental static regeneration
-// all users see the same data but data can change
+// Option 2.2: client-side fetching
+// with api route
 import Title from '@/components/Title';
 import { getProducts } from '@/lib/products';
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
 
-export async function getStaticProps() {
-  console.log('[HomePage] getStaticProps()');
-  const products = await getProducts();
-  return { 
-    props: { products },
-    revalidate: 30,
-  }
-}
-
-function HomePage({ products }) {
+function HomePage() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const response = await fetch('/api/products');
+      const products = await response.json();
+      setProducts(products);
+    })();
+    
+  }, []);
   console.log('[HomePage] render:', products);
   return (
     <>
