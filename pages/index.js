@@ -1,4 +1,4 @@
-// choosed incremental static regeneration
+// chose incremental static regeneration
 // all users see the same data but data can change
 import Title from '@/components/Title';
 import { getProducts } from '@/lib/products';
